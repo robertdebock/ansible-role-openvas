@@ -25,7 +25,6 @@
       'Password:': "{{ openvas_administrator_password }}"
       'Verify Administrator Password:': "{{ openvas_administrator_password }}"
       'Enter Administrator Password:': "{{ openvas_administrator_password }}"
-      'Verify Administrator Password:': "{{ openvas_administrator_password }}"
   async: 1800
   poll: 0
   register: setup_software
