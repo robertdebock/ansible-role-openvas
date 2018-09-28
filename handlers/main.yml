@@ -28,3 +28,5 @@
   async: 1800
   poll: 0
   register: setup_software
+  when:
+    - ansible_virtualization_type != "docker"

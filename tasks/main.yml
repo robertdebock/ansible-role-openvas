@@ -21,6 +21,8 @@
     state: disabled
   notify:
     - reboot
+  when:
+    - ansible_selinux.state is defined
 
 - name: flush handlers
   meta: flush_handlers
@@ -68,3 +70,5 @@
     name: openvas-manager
     state: started
     enabled: yes
+  when:
+    - ansible_virtualization_type != "docker"
