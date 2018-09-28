@@ -60,6 +60,8 @@
   until: check_setup_software.finished
   retries: 180
   delay: 10
+  when:
+    - setup_software is defined
 
 - name: enable software
   service:
