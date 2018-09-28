@@ -30,3 +30,13 @@
   register: setup_software
   when:
     - ansible_virtualization_type != "docker"
+  notify:
+    - check setup software
+
+- name: check setup software
+  async_status:
+    jid: "{{ setup_software.ansible_job_id }}"
+  register: check_setup_software
+  until: check_setup_software.finished
+  retries: 180
+  delay: 10

@@ -55,16 +55,6 @@
 - name: flush handlers
   meta: flush_handlers
 
-- name: check setup software
-  async_status:
-    jid: "{{ setup_software.ansible_job_id }}"
-  register: check_setup_software
-  until: check_setup_software.finished
-  retries: 180
-  delay: 10
-  when:
-    - setup_software is defined
-
 - name: enable software
   service:
     name: openvas-manager
