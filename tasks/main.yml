@@ -1,0 +1,46 @@
+---
+# tasks file for openvas
+- name: load default variables
+  include_vars:
+    file: default.yml
+
+- name: load os-specific variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+    - "{{ ansible_distribution }}.yml"
+    - default.yml
+
+- name: install repository
+  package:
+    name: "{{ openvas_release }}"
+    state: present
+
+- name: disable selinux
+  selinux:
+    state: disabled
+  notify:
+    - reboot
+
+- name: flush handlers
+  meta: flush_handlers
+
+- name: install requirements
+  packages:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ openvas_requirements }}"
+
+- name: install software
+  package:
+    name: openvas
+    state: present
+  notify:
+    - setup software
+
+- name: enable software
+  service:
+    name: openvas
+    state: started
+    enabled: yes

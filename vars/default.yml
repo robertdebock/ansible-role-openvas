@@ -1,0 +1,7 @@
+---
+# vars file for openvas
+openvas_requirements:
+  - rsync
+
+openvas_software:
+  - openvas
