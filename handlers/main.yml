@@ -15,16 +15,17 @@
     delay: "{{ openvas_up_delay }}"
 
 - name: setup software
-  command: openvas-setup
-
-- name: setup software
   expect:
-    command: openvas-setup
+    command: openvas-setup >> /tmp/openvas-setup.txt
+    timeout: 1800
     responses:
-      "Downloader [Default: rsync]": rsync
-      "Allow connections from any IP? [Default: yes]": yes
-      "Enter administrator username [Default: admin]": administrator
-      "Password:" password
-      "Verify Administrator Password:" password
-      "Enter Administrator Password:" password
-      "Verify Administrator Password:" password
+      'Downloader \[Default: rsync\]': rsync
+      'Allow connections from any IP\? \[Default: yes\]': yes
+      'Enter administrator username \[Default: admin\]': "{{ openvas_administrator_username }}"
+      'Password:': "{{ openvas_administrator_password }}"
+      'Verify Administrator Password:': "{{ openvas_administrator_password }}"
+      'Enter Administrator Password:': "{{ openvas_administrator_password }}"
+      'Verify Administrator Password:': "{{ openvas_administrator_password }}"
+  async: 1800
+  poll: 0
+  register: setup_software

@@ -1,4 +1,4 @@
 ---
 # defaults file for openvas
-openvas_reboot_delay: 4
-openvas_up_delay: 8
+openvas_administrator_username: admin
+openvas_administrator_password: password
