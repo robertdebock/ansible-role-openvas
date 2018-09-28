@@ -65,6 +65,6 @@
 
 - name: enable software
   service:
-    name: openvas
+    name: openvas-manager
     state: started
     enabled: yes

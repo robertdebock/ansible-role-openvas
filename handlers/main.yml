@@ -20,7 +20,7 @@
     timeout: 1800
     responses:
       'Downloader \[Default: rsync\]': rsync
-      'Allow connections from any IP\? \[Default: yes\]': yes
+      'Allow connections from any IP\? \[Default: yes\]': "yes"
       'Enter administrator username \[Default: admin\]': "{{ openvas_administrator_username }}"
       'Password:': "{{ openvas_administrator_password }}"
       'Verify Administrator Password:': "{{ openvas_administrator_password }}"
