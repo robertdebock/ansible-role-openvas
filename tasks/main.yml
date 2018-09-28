@@ -25,12 +25,23 @@
 - name: flush handlers
   meta: flush_handlers
 
-- name: install requirements
+- name: install requirements (package)
   packages:
-    name: "{{ item }}"
+    name: "{{ item.name }}"
     state: present
   with_items:
     - "{{ openvas_requirements }}"
+  when:
+    - item.type == "package"
+
+- name: install requirements (pip)
+  pip:
+    name: "{{ item.name }}"
+    state: present
+  with_items:
+    - "{{ openvas_requirements }}"
+  when:
+    - item.type == "pip"
 
 - name: install software
   package:

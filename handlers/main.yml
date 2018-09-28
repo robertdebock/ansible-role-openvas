@@ -16,3 +16,15 @@
 
 - name: setup software
   command: openvas-setup
+
+- name: setup software
+  expect:
+    command: openvas-setup
+    responses:
+      "Downloader [Default: rsync]": rsync
+      "Allow connections from any IP? [Default: yes]": yes
+      "Enter administrator username [Default: admin]": administrator
+      "Password:" password
+      "Verify Administrator Password:" password
+      "Enter Administrator Password:" password
+      "Verify Administrator Password:" password

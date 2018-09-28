@@ -1,7 +1,10 @@
 ---
 # vars file for openvas
 openvas_requirements:
-  - rsync
+  - name: rsync
+    type: package
+  - name: pexpect
+    type: pip
 
 openvas_software:
   - openvas
