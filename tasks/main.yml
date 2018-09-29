@@ -16,7 +16,7 @@
     name: "{{ openvas_release }}"
     state: present
   when:
-   - ansible_pkg_mgr == "rpm"
+    - ansible_pkg_mgr == "rpm"
 
 - name: install repository (apt)
   apt_repository:
