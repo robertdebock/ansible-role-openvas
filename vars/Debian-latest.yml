@@ -1,0 +1,3 @@
+---
+# vars file for openvas
+openvas_release: "deb http://updates.atomicorp.com/channels/atomic/debian/ stretch"

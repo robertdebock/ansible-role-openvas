@@ -11,10 +11,19 @@
     - "{{ ansible_distribution }}.yml"
     - default.yml
 
-- name: install repository
+- name: install repository (rpm)
   package:
     name: "{{ openvas_release }}"
     state: present
+  when:
+   - ansible_pkg_mgr == "rpm"
+
+- name: install repository (apt)
+  apt_repository:
+    repo: "{{ openvas_release }}"
+    state: present
+  when:
+    - ansible_pkg_mgr == apt
 
 - name: disable selinux
   selinux:
