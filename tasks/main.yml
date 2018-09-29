@@ -11,31 +11,6 @@
     - "{{ ansible_distribution }}.yml"
     - default.yml
 
-- name: install repository (rpm)
-  package:
-    name: "{{ openvas_release }}"
-    state: present
-  when:
-    - ansible_pkg_mgr == "rpm"
-
-- name: install repository (apt)
-  apt_repository:
-    repo: "{{ openvas_release }}"
-    state: present
-  when:
-    - ansible_pkg_mgr == apt
-
-- name: disable selinux
-  selinux:
-    state: disabled
-  notify:
-    - reboot
-  when:
-    - ansible_selinux.state is defined
-
-- name: flush handlers
-  meta: flush_handlers
-
 - name: install requirements (package)
   package:
     name: "{{ item.name }}"
@@ -53,6 +28,46 @@
     - "{{ openvas_requirements }}"
   when:
     - item.type == "pip"
+
+- name: install repository (yum/dnf)
+  package:
+    name: "{{ openvas_release }}"
+    state: present
+  when:
+    - ansible_pkg_mgr == "yum" or ansible_pkg_mgr == "dnf"
+
+- name: install repository key (apt)
+  apt_key:
+    url: https://www.atomicorp.com/RPM-GPG-KEY.art.txt
+    state: present
+  when:
+    - ansible_pkg_mgr == "apt"
+
+- name: install repository key (yum/dnf)
+  rpm_key:
+    key: https://www.atomicorp.com/RPM-GPG-KEY.art.txt
+    state: present
+  when:
+    - ansible_pkg_mgr == "yum" or ansible_pkg_mgr == "dnf"
+
+- name: install repository (apt)
+  apt_repository:
+    repo: "{{ openvas_release }}"
+    state: present
+  when:
+    - ansible_pkg_mgr == "apt"
+
+- name: disable selinux
+  selinux:
+    state: disabled
+  notify:
+    - reboot
+  when:
+    - ansible_selinux.status is defined
+    - ansible_selinux.status == "enabled"
+
+- name: flush handlers
+  meta: flush_handlers
 
 - name: install software
   package:
