@@ -38,7 +38,8 @@
 
 - name: install repository key (apt)
   apt_key:
-    url: https://www.atomicorp.com/RPM-GPG-KEY.art.txt
+    keyserver: keyserver.ubuntu.com
+    id: FFBD5D0A4520AFA9
     state: present
   when:
     - ansible_pkg_mgr == "apt"
