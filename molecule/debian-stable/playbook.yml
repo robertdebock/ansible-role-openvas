@@ -7,6 +7,6 @@
   roles:
     - role: robertdebock.bootstrap
     - role: robertdebock.buildtools
-    - role: robertdebock.epel
     - role: robertdebock.python_pip
+    - role: robertdebock.redis
     - role: ansible-role-openvas
