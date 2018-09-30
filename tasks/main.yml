@@ -12,9 +12,10 @@
     - default.yml
 
 - name: install requirements (package)
-  package:
+  "{{ ansible_pkg_mgr }}:
     name: "{{ item.name }}"
     state: present
+    repository: "{{ openvas_repository | default(omit) }}"
   with_items:
     - "{{ openvas_requirements }}"
   when:
