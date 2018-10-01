@@ -1,4 +1,3 @@
 ---
 # vars file for openvas
 openvas_software: openvas-scanner
-
