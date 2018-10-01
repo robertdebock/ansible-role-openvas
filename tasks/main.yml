@@ -19,18 +19,6 @@
     - "{{ openvas_requirements }}"
   when:
     - item.type == "package"
-    - ansible_pkg_mgr != "apk"
-
-- name: install requirements (apk)
-  package:
-    name: "{{ item.name }}"
-    state: present
-    repository: "{{ openvas_repository }}"
-  with_items:
-    - "{{ openvas_requirements }}"
-  when:
-    - item.type == "package"
-    - ansible_pkg_mgr == "apk"
 
 - name: install requirements (pip)
   pip:
@@ -82,12 +70,24 @@
 - name: flush handlers
   meta: flush_handlers
 
-- name: install software
+- name: install software (package)
   package:
     name: openvas
     state: present
   notify:
     - setup software
+  when:
+    - ansible_pkg_mgr != "apk"
+
+- name: install software (apk)
+  apk:
+    name: openvas
+    state: present
+    repository: "http://dl-cdn.alpinelinux.org/alpine/edge/community"
+  notify:
+    - setup software
+  when:
+    - ansible_pkg_mgr == "apk"
 
 - name: flush handlers
   meta: flush_handlers
