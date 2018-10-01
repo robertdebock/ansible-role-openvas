@@ -84,6 +84,7 @@
     name: openvas
     state: present
     repository: "http://dl-cdn.alpinelinux.org/alpine/edge/community"
+    update_cache: yes
   notify:
     - setup software
   when:
