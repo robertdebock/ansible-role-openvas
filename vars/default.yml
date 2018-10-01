@@ -6,7 +6,7 @@ openvas_requirements:
   - name: pexpect
     type: pip
 
-openvas_software:
+openvas_package:
   - openvas
 
 openvas_reboot_delay: 4

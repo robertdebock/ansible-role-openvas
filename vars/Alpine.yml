@@ -1,3 +1,4 @@
 ---
 # vars file for openvas
-openvas_repository: http://dl-cdn.alpinelinux.org/alpine/edge/community
+openvas_software: openvas-scanner
+

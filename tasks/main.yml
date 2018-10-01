@@ -72,23 +72,10 @@
 
 - name: install software (package)
   package:
-    name: openvas
+    name: "{{ openvas_package }}"
     state: present
   notify:
     - setup software
-  when:
-    - ansible_pkg_mgr != "apk"
-
-- name: install software (apk)
-  apk:
-    name: openvas
-    state: present
-    repository: "http://dl-cdn.alpinelinux.org/alpine/edge/community"
-    update_cache: yes
-  notify:
-    - setup software
-  when:
-    - ansible_pkg_mgr == "apk"
 
 - name: flush handlers
   meta: flush_handlers
