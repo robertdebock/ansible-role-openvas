@@ -12,14 +12,25 @@
     - default.yml
 
 - name: install requirements (package)
-  "{{ ansible_pkg_mgr }}:
+  package:
     name: "{{ item.name }}"
     state: present
-    repository: "{{ openvas_repository | default(omit) }}"
   with_items:
     - "{{ openvas_requirements }}"
   when:
     - item.type == "package"
+    - ansible_pkg_mgr != "apk"
+
+- name: install requirements (apk)
+  package:
+    name: "{{ item.name }}"
+    state: present
+    repository: "{{ openvas_repository }}"
+  with_items:
+    - "{{ openvas_requirements }}"
+  when:
+    - item.type == "package"
+    - ansible_pkg_mgr == "apk"
 
 - name: install requirements (pip)
   pip:
