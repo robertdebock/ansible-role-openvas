@@ -82,8 +82,11 @@
 
 - name: enable software
   service:
-    name: openvas-manager
+    name: "{{ item }}"
     state: started
     enabled: yes
   when:
     - ansible_virtualization_type != "docker"
+  with_items:
+    - openvas-manager
+    - gsad
