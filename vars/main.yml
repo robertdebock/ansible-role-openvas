@@ -6,8 +6,12 @@ openvas_requirements:
   - name: pexpect
     type: pip
 
-openvas_package:
-  - openvas
+openvas_packages:
+  default:
+    - openvas
+  Alpine:
+    - openvas-scanner
+    - openvas-cli
 
 openvas_reboot_delay: 4
 openvas_up_delay: 8
