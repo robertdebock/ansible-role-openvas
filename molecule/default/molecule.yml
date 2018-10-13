@@ -1,0 +1,50 @@
+---
+dependency:
+  name: galaxy
+  options:
+    role-file: requirements.yml
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: openvas-alpine-edge
+    image: alpine:edge
+    command: sh -c "while true ; do sleep 1 ; done"
+  - name: openvas-alpine-latest
+    image: alpine:latest
+    command: sh -c "while true ; do sleep 1 ; done"
+  - name: openvas-archlinux
+    image: base/archlinux
+  - name: openvas-centos-6
+    image: centos:6
+  - name: openvas-centos-latest
+    image: centos:latest
+  - name: openvas-debian-latest
+    image: debian:latest
+  - name: openvas-debian-stable
+    image: debian:stable
+  - name: openvas-debian-unstable
+    image: debian:unstable
+  - name: openvas-fedora-latest
+    image: fedora:latest
+  - name: openvas-fedora-rawhide
+    image: fedora:rawhide
+  - name: openvas-opensuse-leap
+    image: opensuse:leap
+  - name: openvas-opensuse-tumbleweed
+    image: opensuse:tumbleweed
+  - name: openvas-ubuntu-artful
+    image: ubuntu:artful
+  - name: openvas-ubuntu-devel
+    image: ubuntu:devel
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+scenario:
+  name: default
+verifier:
+  name: goss
+  lint:
+    name: yamllint

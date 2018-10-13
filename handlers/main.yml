@@ -14,7 +14,7 @@
   wait_for_connection:
     delay: "{{ openvas_up_delay }}"
 
-- name: setup software
+- name: setup openvas
   expect:
     command: openvas-setup
     timeout: 1800
@@ -27,16 +27,16 @@
       'Enter Administrator Password:': "{{ openvas_administrator_password }}"
   async: 1800
   poll: 0
-  register: setup_software
+  register: setup_openvas
   when:
     - ansible_virtualization_type != "docker"
   notify:
-    - check setup software
+    - check setup openvas
 
-- name: check setup software
+- name: check setup openvas
   async_status:
-    jid: "{{ setup_software.ansible_job_id }}"
-  register: check_setup_software
-  until: check_setup_software.finished
+    jid: "{{ setup_openvas.ansible_job_id }}"
+  register: check_setup_openvas
+  until: check_setup_openvas.finished
   retries: 180
   delay: 10

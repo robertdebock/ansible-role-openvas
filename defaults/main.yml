@@ -2,3 +2,6 @@
 # defaults file for openvas
 openvas_administrator_username: admin
 openvas_administrator_password: password
+
+# To update all packages installed by this roles, set `openvas_package_state` to `latest`.
+openvas_package_state: present
