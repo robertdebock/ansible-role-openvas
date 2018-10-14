@@ -20,7 +20,8 @@
 
 - name: install repository (yum/dnf)
   package:
-    name: "{{ openvas_release[ansible_distribution] }}"
+    name: "{{ openvas_release[ansible_distribution ~ '-' ~ ansible_distribution_major_version]
+          | default(openvas_release[ansible_distribution]) }}"
     state: present
   when:
     - ansible_pkg_mgr == "yum" or ansible_pkg_mgr == "dnf"
@@ -42,7 +43,8 @@
 
 - name: install repository (apt)
   apt_repository:
-    repo: "{{ openvas_release[ansible_distribution] }}"
+    repo: "{{ openvas_release[ansible_distribution ~ '-' ~ ansible_distribution_major_version]
+          | default(openvas_release[ansible_distribution]) }}"
     state: present
   when:
     - ansible_pkg_mgr == "apt"
