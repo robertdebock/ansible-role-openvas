@@ -49,14 +49,11 @@
   when:
     - ansible_pkg_mgr == "apt"
 
-- name: disable selinux
-  selinux:
-    state: disabled
-  notify:
-    - reboot
-  when:
-    - ansible_selinux.status is defined
-    - ansible_selinux.status == "enabled"
+- name: include selinux role
+  include_role:
+    name: robertdebock.selinux
+  vars:
+    selinux_state: disabled
 
 - name: flush handlers
   meta: flush_handlers
