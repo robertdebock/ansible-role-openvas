@@ -6,16 +6,20 @@ openvas_requirements:
   - name: pexpect
     type: pip
 
-openvas_packages:
+_openvas_packages:
   default:
     - openvas
   Alpine:
     - openvas-scanner
     - openvas-cli
 
-openvas_release:
+openvas_packages: "{{ _openvas_packages[ansible_distribution] | default(_openvas_packages['default']) }}"
+
+_openvas_release:
   CentOS: "http://updates.atomicorp.com/channels/atomic/{{ ansible_distribution | lower }}/{{ ansible_distribution_major_version }}/{{ ansible_architecture }}/RPMS/atomic-release-1.0-21.el{{ ansible_distribution_major_version }}.art.noarch.rpm"
   Debian: "deb http://updates.atomicorp.com/channels/atomic/debian/ stretch main"
   Fedora: http://updates.atomicorp.com/channels/atomic/{{ ansible_distribution | lower }}/{{ ansible_distribution_major_version }}/{{ ansible_architecture }}/RPMS/atomic-release-1.0-21.fc{{ ansible_distribution_major_version }}.art.noarch.rpm
   Ubuntu-17: "deb http://updates.atomicorp.com/channels/atomic/ubuntu/ artful main"
   Ubuntu: "deb http://updates.atomicorp.com/channels/atomic/ubuntu/ bionic main"
+
+openvas_release: "{{ _openvas_release[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_openvas_release[ansible_distribution]) }}"

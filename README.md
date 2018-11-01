@@ -5,40 +5,73 @@ openvas
 
 Provides openvas for your system.
 
-[Unit tests](https://travis-ci.org/robertdebock/ansible-role-openvas) are done on every commit and periodically.
 
-If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-openvas/issues)
+Example Playbook
+----------------
 
-To test this role locally please use [Molecule](https://github.com/metacloud/molecule):
+This example is taken from `molecule/default/playbook.yml`:
 ```
-pip install molecule
-molecule test
+---
+- name: Converge
+  hosts: all
+  gather_facts: false
+  become: true
+
+  roles:
+    - robertdebock.bootstrap
+    - robertdebock.buildtools
+    - robertdebock.epel
+    - robertdebock.python_pip
+    - robertdebock.redis
+    - robertdebock.openvas
+
 ```
-There are many scenarios available, please have a look in the `molecule/` directory.
+
+Role Variables
+--------------
+
+These variables are set in `defaults/main.yml`:
+```
+---
+# defaults file for openvas
+
+# The username for the openvas webinterface.
+openvas_administrator_username: admin
+
+# The password for the openvas webinterface.
+openvas_administrator_password: password
+
+# To update all packages installed by this roles, set `openvas_package_state` to `latest`.
+openvas_package_state: present
+
+```
+
+Requirements
+------------
+
+- Access to a repository containing packages, likely on the internet.
+- A recent version of Ansible. (Tests run on the last 3 release of Ansible.)
+
+The following roles can be installed to ensure all requirements are met, using `ansible-galaxy install -r requirements.yml`:
+
+---
+- robertdebock.bootstrap
+- robertdebock.buildtools
+- robertdebock.epel
+- robertdebock.python_pip
+- robertdebock.redis
+- robertdebock.selinux
+- robertdebock.reboot
+
 
 Context
---------
+-------
+
 This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://robertdebock.nl/) for further information.
 
 Here is an overview of related roles:
 ![dependencies](https://raw.githubusercontent.com/robertdebock/drawings/artifacts/openvas.png "Dependency")
 
-Requirements
-------------
-
-- A system installed with required packages to run Ansible. Hint: [bootstrap](https://galaxy.ansible.com/robertdebock/bootstrap).
-- Access to a repository containing packages, likely on the internet.
-- A recent version of Ansible. (Tests run on the last 3 release of Ansible.)
-
-Role Variables
---------------
-
-- openvas_parameter: Description of values. [default: value]
-
-Dependencies
-------------
-
-- None known.
 
 Compatibility
 -------------
@@ -65,36 +98,26 @@ This role has been tested against the following distributions and Ansible versio
 
 A single star means the build may fail, it's marked as an experimental build.
 
-Example Playbook
-----------------
+Testing
+-------
 
-```
----
-- name: openvas
-  hosts: all
-  gather_facts: no
-  become: yes
+[Unit tests](https://travis-ci.org/robertdebock/ansible-role-openvas) are done on every commit and periodically.
 
-  roles:
-    - role: robertdebock.bootstrap
-    - role: robertdebock.openvas
-      openvas_parameter: value
-```
+If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-openvas/issues)
 
-To install this role:
-- Install this role individually using `ansible-galaxy install robertdebock.openvas`
+To test this role locally please use [Molecule](https://github.com/metacloud/molecule):
+```
+pip install molecule
+molecule test
+```
+There are many specific scenarios available, please have a look in the `molecule/` directory.
 
-Sample roles/requirements.yml: (install with `ansible-galaxy install -r roles/requirements.yml
-```
----
-- name: robertdebock.bootstrap
-- name: robertdebock.openvas
-```
 
 License
 -------
 
-Apache License, Version 2.0
+Apache-2.0
+
 
 Author Information
 ------------------
