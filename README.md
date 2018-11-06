@@ -3,8 +3,7 @@ openvas
 
 [![Build Status](https://travis-ci.org/robertdebock/ansible-role-openvas.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-openvas)
 
-Provides openvas for your system.
-
+The purpose of this role is to install and configure openvas on your system.
 
 Example Playbook
 ----------------
