@@ -81,13 +81,13 @@ This role has been tested against the following distributions and Ansible versio
 |------------|-----------|-----------|-----------|-----------|-------------|
 |alpine-edge*|yes|yes|yes|yes|yes*|
 |alpine-latest|yes|yes|yes|yes|yes*|
-|archlinux|yes|yes|yes|yes|yes*|
+|archlinux|no|no|no|no|no*|
 |centos-6|no|no|no|no|yes*|
 |centos-latest|yes|yes|yes|yes|yes*|
-|debian-latest|yes|yes|yes|yes|yes*|
-|debian-stable|yes|yes|yes|yes|yes*|
+|debian-latest|no|no|no|no|yes*|
+|debian-stable|no|no|no|no|yes*|
 |debian-unstable*|yes|yes|yes|yes|yes*|
-|fedora-latest|yes|yes|yes|yes|yes*|
+|fedora-latest|no|no|no|no|no*|
 |fedora-rawhide*|no|no|no|no|no*|
 |opensuse-leap|no|no|no|no|yes*|
 |opensuse-tumbleweed|no|no|no|no|yes*|
@@ -109,6 +109,9 @@ To test this role locally please use [Molecule](https://github.com/metacloud/mol
 pip install molecule
 molecule test
 ```
+
+To test on Amazon EC2, configure [~/.aws/credentials[(https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html) and `export AWS_REGION=eu-central-1` before running `molecule test --scenario-name ec2`.
+
 There are many specific scenarios available, please have a look in the `molecule/` directory.
 
 Run the [ansible-galaxy[(https://github.com/ansible/galaxy-lint-rules) and [my](https://github.com/robertdebock/ansible-lint-rules) lint rules if you want your change to be merges:
