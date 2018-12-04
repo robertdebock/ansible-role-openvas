@@ -8,6 +8,9 @@
     - "{{ openvas_requirements }}"
   when:
     - item.type == "package"
+  register: openvas_install_requirements_package
+  until: openvas_install_requirements_package
+  retries: 3
 
 - name: install requirements (pip)
   pip:
@@ -17,6 +20,9 @@
     - "{{ openvas_requirements }}"
   when:
     - item.type == "pip"
+  register: openvas_install_requirements_pip
+  until: openvas_install_requirements_pip
+  retries: 3
 
 - name: install repository (yum/dnf)
   package:
@@ -24,6 +30,9 @@
     state: present
   when:
     - ansible_pkg_mgr == "yum" or ansible_pkg_mgr == "dnf"
+  register: openvas_install_repository_yum_dnf
+  until: openvas_install_repository_yum_dnf
+  retries: 3
 
 - name: install repository key (apt)
   apt_key:
@@ -32,6 +41,9 @@
     state: present
   when:
     - ansible_pkg_mgr == "apt"
+  register: openvas_install_repository_key_apt
+  until: openvas_install_repository_key_apt
+  retries: 3
 
 - name: install repository key (yum/dnf)
   rpm_key:
@@ -39,6 +51,9 @@
     state: present
   when:
     - ansible_pkg_mgr == "yum" or ansible_pkg_mgr == "dnf"
+  register: openvas_install_repository_key_yum_dnf
+  until: openvas_install_repository_key_yum_dnf
+  retries: 3
 
 - name: install repository (apt)
   apt_repository:
@@ -62,6 +77,9 @@
     state: "{{ openvas_package_state }}"
   notify:
     - setup openvas
+  register: openvas_install_openvas_package
+  until: openvas_install_openvas_package
+  retries: 3
 
 - name: flush handlers
   meta: flush_handlers
