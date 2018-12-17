@@ -92,5 +92,4 @@
   when:
     - ansible_virtualization_type != "docker" or openvas_ignore_docker
   with_items:
-    - openvas-manager
-    - gsad
+    - "{{ openvas_services }}"

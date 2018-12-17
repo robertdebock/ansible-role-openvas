@@ -4,6 +4,11 @@
   gather_facts: false
   become: true
 
+  vars:
+    redis_ignore_docker: no
+    selinux_ignore_docker: no
+    reboot_ignore_docker: no
+
   roles:
     - robertdebock.bootstrap
     - robertdebock.buildtools
