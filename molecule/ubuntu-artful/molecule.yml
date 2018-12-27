@@ -16,6 +16,7 @@ provisioner:
     group_vars:
       all:
         redis_ignore_docker: no
+        selinux_ignore_docker: no
         openvas_ignore_docker: no
   lint:
     name: ansible-lint
