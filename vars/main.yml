@@ -10,8 +10,11 @@ _openvas_packages:
   default:
     - openvas
   Alpine:
-    - openvas-scanner
     - openvas-cli
+    - openvas-scanner
+  Fedora:
+    - openvas-cli
+    - openvas-scanner
 
 openvas_packages: "{{ _openvas_packages[ansible_distribution] | default(_openvas_packages['default']) }}"
 
@@ -26,7 +29,18 @@ _openvas_release:
 
 openvas_release: "{{ _openvas_release[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_openvas_release[ansible_distribution]) }}"
 
-openvas_services:
-  - openvas-manager
-  - openvas-scanner
-  - gsad
+_openvas_setup_command:
+  default: openvas-setup
+  Fedora-29: openvas-check-setup
+
+openvas_setup_command: "{{ _openvas_setup_command[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_openvas_setup_command['default']) }}"
+
+_openvas_services:
+  default:
+    - openvas-manager
+    - openvas-scanner
+    - gsad
+  Fedora:
+    - openvas-scanner
+
+openvas_services: "{{ _openvas_services[ansible_distribution] | default(_openvas_services['default']) }}"

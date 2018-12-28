@@ -2,7 +2,7 @@
 # handlers file for openvas
 - name: setup openvas
   expect:
-    command: openvas-setup
+    command: "{{ openvas_setup_command }}"
     timeout: 1800
     responses:
       'Downloader \[Default: rsync\]': rsync
