@@ -16,6 +16,11 @@ This example is taken from `molecule/default/playbook.yml`:
   gather_facts: false
   become: true
 
+  vars:
+    redis_ignore_docker: no
+    selinux_ignore_docker: no
+    reboot_ignore_docker: no
+
   roles:
     - robertdebock.bootstrap
     - robertdebock.buildtools
@@ -89,10 +94,10 @@ This role has been tested against the following distributions and Ansible versio
 |archlinux|no|no|no*|
 |centos-6|no|no|yes*|
 |centos-latest|yes|yes|yes*|
-|debian-latest|no|no|yes*|
-|debian-stable|no|no|yes*|
+|debian-latest|yes|yes|yes*|
+|debian-stable|yes|yes|yes*|
 |debian-unstable*|yes|yes|yes*|
-|fedora-latest|no|no|no*|
+|fedora-latest|yes|yes|yes*|
 |fedora-rawhide*|no|no|no*|
 |opensuse-leap|no|no|yes*|
 |opensuse-tumbleweed|no|no|yes*|
