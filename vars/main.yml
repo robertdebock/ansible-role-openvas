@@ -3,6 +3,8 @@
 openvas_requirements:
   - name: rsync
     type: package
+  - name: nmap
+    type: package
   - name: pexpect
     type: pip
 
