@@ -34,7 +34,7 @@
     state: present
   when:
     - ansible_pkg_mgr == "yum" or ansible_pkg_mgr == "dnf"
-    - ansible_distribtution != "Fedora"
+    - ansible_distribution != "Fedora"
   register: openvas_install_repository_yum_dnf
   until: openvas_install_repository_yum_dnf
   retries: 3
