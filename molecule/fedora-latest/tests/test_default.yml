@@ -1,5 +1,10 @@
 # Molecule managed
 ---
+file:
+  /usr/sbin/openvassd:
+    exists: true
 command:
   /usr/sbin/openvassd:
     exit-status: 0
+    stderr: []
+    timeout: 10000

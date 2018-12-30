@@ -97,7 +97,7 @@ This role has been tested against the following distributions and Ansible versio
 |debian-latest|yes|yes|yes*|
 |debian-stable|yes|yes|yes*|
 |debian-unstable*|yes|yes|yes*|
-|fedora-latest|yes|yes|yes*|
+|fedora-latest|no|no|no*|
 |fedora-rawhide*|no|no|no*|
 |opensuse-leap|no|no|yes*|
 |opensuse-tumbleweed|no|no|yes*|

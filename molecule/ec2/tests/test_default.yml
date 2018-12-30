@@ -1,8 +1,10 @@
 # Molecule managed
-
 ---
 file:
-  /etc/hosts:
+  /usr/sbin/openvassd:
     exists: true
-    owner: root
-    group: root
+command:
+  /usr/sbin/openvassd:
+    exit-status: 0
+    stderr: []
+    timeout: 10000
