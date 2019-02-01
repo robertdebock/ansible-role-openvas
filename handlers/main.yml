@@ -26,3 +26,6 @@
   until: check_setup_openvas.finished
   retries: 180
   delay: 10
+  when:
+    - ansible_distribution != "Debian" or
+      ansible_distribution != "Ubuntu"

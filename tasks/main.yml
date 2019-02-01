@@ -86,6 +86,19 @@
   until: openvas_install_openvas_package
   retries: 3
 
+- name: setup certificates
+  expect:
+    command: openvas-mkcert
+    responses:
+      'CA certificate life time in days \[1460\]: ': 1460
+      'Server certificate life time in days \[365\]: ': 365
+      'Your country (two letter code) \[DE\]: ': NL
+      'Your state or province name \[none\]: ': UTRECHT
+      'Your location (e.g. town) \[Berlin\]: ': Breukelen
+      'Your organization [OpenVAS Users United]: ': Very little
+      'Press [ENTER] to exit': okay
+    creates: /var/lib/openvas/CA/cacert.pem
+
 - name: flush handlers
   meta: flush_handlers
 
