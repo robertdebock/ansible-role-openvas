@@ -4,9 +4,9 @@ language: python
 services: docker
 
 env:
-  - version=">=2.6,<2.7" distro="alpine-latest"
-  - version="" distro="alpine-latest"
-  - version="devel" distro="alpine-latest"
+  - version=">=2.6,<2.7" distro="alpine-latest" expectation="fail"
+  - version="" distro="alpine-latest" expectation="fail"
+  - version="devel" distro="alpine-latest" expectation="fail"
   - version=">=2.6,<2.7" distro="alpine-edge" expectation="fail"
   - version="" distro="alpine-edge" expectation="fail"
   - version="devel" distro="alpine-edge" expectation="fail"

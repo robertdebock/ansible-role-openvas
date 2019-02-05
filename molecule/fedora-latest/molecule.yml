@@ -15,6 +15,7 @@ provisioner:
   inventory:
     group_vars:
       all:
+        reboot_ignore_docker: no
         redis_ignore_docker: no
         selinux_ignore_docker: no
         openvas_ignore_docker: no

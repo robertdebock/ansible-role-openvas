@@ -17,6 +17,10 @@ _openvas_packages:
   Fedora:
     - openvas-cli
     - openvas-scanner
+  openSUSE Leap:
+    - openvas-scanner
+  openSUSE Tumbleweed:
+    - openvas-scanner
 
 openvas_packages: "{{ _openvas_packages[ansible_distribution] | default(_openvas_packages['default']) }}"
 
@@ -26,6 +30,8 @@ _openvas_release:
   CentOS: "http://updates.atomicorp.com/channels/atomic/{{ ansible_distribution | lower }}/{{ ansible_distribution_major_version }}/{{ ansible_architecture }}/RPMS/atomic-release-{{ openvas_release_version }}.el{{ ansible_distribution_major_version }}.art.noarch.rpm"
   Debian: "deb http://updates.atomicorp.com/channels/atomic/debian/ stretch main"
   Fedora: "http://updates.atomicorp.com/channels/atomic/{{ ansible_distribution | lower }}/{{ ansible_distribution_major_version }}/{{ ansible_architecture }}/RPMS/atomic-release-{{ openvas_release_version }}.fc{{ ansible_distribution_major_version }}.art.noarch.rpm"
+  openSUSE Tumbleweed: http://updates.atomicorp.com/channels/atomic/opensuse/12/{{ ansible_architecture }}/RPMS/atomic-release-{{ openvas_release_version }}.suse12.3.art.noarch.rpm"
+  openSUSE Leap: http://updates.atomicorp.com/channels/atomic/opensuse/13/{{ ansible_architecture }}/RPMS/atomic-release-{{ openvas_release_version }}.suse13.1.art.noarch.rpm"
   Ubuntu-17: "deb http://updates.atomicorp.com/channels/atomic/ubuntu/ artful main"
   Ubuntu: "deb http://updates.atomicorp.com/channels/atomic/ubuntu/ bionic main"
 
