@@ -32,8 +32,6 @@ platforms:
     image: fedora:rawhide
   - name: openvas-opensuse-leap
     image: opensuse:leap
-  - name: openvas-opensuse-tumbleweed
-    image: opensuse:tumbleweed
   - name: openvas-ubuntu-latest
     image: ubuntu:latest
   - name: openvas-ubuntu-rolling
