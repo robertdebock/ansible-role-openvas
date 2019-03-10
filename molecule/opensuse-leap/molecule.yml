@@ -23,7 +23,3 @@ provisioner:
     name: ansible-lint
 scenario:
   name: opensuse-leap
-verifier:
-  name: goss
-  lint:
-    name: yamllint
