@@ -81,7 +81,7 @@
 - name: install openvas (package)
   package:
     name: "{{ openvas_packages }}"
-    state: "{{ openvas_package_state }}"
+    state: present
   notify:
     - setup openvas
   register: openvas_install_openvas_package
@@ -112,6 +112,6 @@
     state: started
     enabled: yes
   when:
-    - ansible_virtualization_type != "docker" or openvas_ignore_docker
+    - ansible_virtualization_type != "docker"
   with_items:
     - "{{ openvas_services }}"

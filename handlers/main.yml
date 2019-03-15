@@ -15,7 +15,7 @@
   poll: 0
   register: setup_openvas
   when:
-    - ansible_virtualization_type != "docker" or openvas_ignore_docker
+    - ansible_virtualization_type != "docker"
   notify:
     - check setup openvas
 
