@@ -1,5 +1,5 @@
 ---
-- name: Converge
+- name: Prepare
   hosts: all
   gather_facts: no
   become: yes
@@ -27,4 +27,3 @@
     - robertdebock.python_pip
     - robertdebock.redis
     - robertdebock.ca
-    - ansible-role-openvas
