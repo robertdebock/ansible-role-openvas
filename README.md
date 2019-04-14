@@ -29,16 +29,18 @@ The machine you are running this on, may need to be prepared. Tests have been do
   become: yes
 
   vars:
-    ca_privatekey_path: "/var/lib/openvas/CA/cacert.pem"
+    # ca_privatekey_path: "/var/lib/openvas/CA/cacert.pem"
     ca_requests:
       - name: clientkey
         passphrase: WoNtT3L1
+        cipher: aes256
         country_name: NL
         email_address: robert@meinit.nl
         organization_name: Some Corporation
         organizational_unit_name: Department X
       - name: serverkey
         passphrase: WoNtT3L1
+        cipher: aes256
         country_name: NL
         email_address: robert@meinit.nl
         organization_name: Some Corporation
@@ -108,19 +110,19 @@ This role has been tested against the following distributions and Ansible versio
 |distribution|ansible 2.6|ansible 2.7|ansible devel|
 |------------|-----------|-----------|-------------|
 |alpine-edge*|no|no|no*|
-|alpine-latest|no|no|no*|
+|alpine-latest|yes|yes|yes*|
 |archlinux|no|no|no*|
 |centos-6|no|no|yes*|
-|centos-latest|yes|yes|yes*|
-|debian-latest|no|no|no*|
-|debian-stable|no|no|no*|
+|centos-latest|no|no|no*|
+|debian-latest|yes|yes|yes*|
+|debian-stable|yes|yes|yes*|
 |debian-unstable*|yes|yes|yes*|
-|fedora-latest|no|no|no*|
-|fedora-rawhide*|no|no|no*|
-|opensuse-leap|no|no|yes*|
+|fedora-latest|yes|yes|yes*|
+|fedora-rawhide*|yes|yes|yes*|
+|opensuse-leap|yes|yes|yes*|
 |ubuntu-devel*|yes|yes|yes*|
 |ubuntu-latest|yes|yes|yes*|
-|ubuntu-rolling|no|no|yes*|
+|ubuntu-rolling|yes|yes|yes*|
 
 A single star means the build may fail, it's marked as an experimental build.
 
