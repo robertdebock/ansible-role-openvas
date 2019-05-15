@@ -113,7 +113,7 @@ This role has been tested against the following distributions and Ansible versio
 |alpine-latest|yes|yes|yes*|
 |archlinux|no|no|no*|
 |centos-6|no|no|yes*|
-|centos-latest|no|yes|yes*|
+|centos-latest|yes|yes|yes*|
 |debian-latest|yes|yes|yes*|
 |debian-stable|yes|yes|yes*|
 |debian-unstable*|yes|yes|yes*|

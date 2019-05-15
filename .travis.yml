@@ -16,7 +16,7 @@ env:
   - version=">=2.6,<2.7" distro="centos-6" expectation="fail"
   - version="" distro="centos-6" expectation="fail"
   - version="devel" distro="centos-6" expectation="fail"
-  - version=">=2.6,<2.7" distro="centos-latest" expectation="fail"
+  - version=">=2.6,<2.7" distro="centos-latest"
   - version="" distro="centos-latest"
   - version="devel" distro="centos-latest"
   - version=">=2.6,<2.7" distro="debian-latest"
