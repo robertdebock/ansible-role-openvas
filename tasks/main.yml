@@ -28,17 +28,6 @@
   until: openvas_install_requirements_pip is succeeded
   retries: 3
 
-- name: install repository (yum/dnf)
-  package:
-    name: "{{ openvas_release }}"
-    state: present
-  when:
-    - ansible_pkg_mgr == "yum" or ansible_pkg_mgr == "dnf"
-    - ansible_distribution != "Fedora"
-  register: openvas_install_repository_yum_dnf
-  until: openvas_install_repository_yum_dnf is succeeded
-  retries: 3
-
 - name: install repository key (apt)
   apt_key:
     keyserver: keyserver.ubuntu.com
@@ -50,7 +39,7 @@
   until: openvas_install_repository_key_apt is succeeded
   retries: 3
 
-- name: install repository key (yum/dnf)
+- name: install repository key (yum/dnf/zypper)
   rpm_key:
     key: https://www.atomicorp.com/RPM-GPG-KEY.art.txt
     state: present
@@ -58,8 +47,21 @@
     - ansible_pkg_mgr == "yum" or
       ansible_pkg_mgr == "dnf" or
       ansible_pkg_mgr == "zypper"
-  register: openvas_install_repository_key_yum_dnf
-  until: openvas_install_repository_key_yum_dnf is succeeded
+  register: openvas_install_repository_key_yum_dnf_zypper
+  until: openvas_install_repository_key_yum_dnf_zypper is succeeded
+  retries: 3
+
+- name: install repository (yum/dnf/zypper)
+  package:
+    name: "{{ openvas_release }}"
+    state: present
+  when:
+    - ansible_pkg_mgr == "yum" or
+      ansible_pkg_mgr == "dnf" or
+      ansible_pkg_mgr == "zypper"
+    - ansible_distribution != "Fedora"
+  register: openvas_install_repository_yum_dnf_zypper
+  until: openvas_install_repository_yum_dnf_zypper is succeeded
   retries: 3
 
 - name: install repository (apt)
