@@ -12,7 +12,6 @@ _openvas_packages:
   default:
     - openvas
   Alpine:
-    - openvas-cli
     - openvas-scanner
   Fedora:
     - openvas-cli
