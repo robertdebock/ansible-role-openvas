@@ -126,6 +126,11 @@ This role has been tested against the following distributions and Ansible versio
 
 A single star means the build may fail, it's marked as an experimental build.
 
+Upstream version(s)
+-------------------
+
+This role [mentions a version](https://github.com/robertdebock/ansible-role-openvas/blob/master/vars/main.yml) of [openvas](https://updates.atomicorp.com/channels/atomic/centos/7/x86_64/RPMS/).
+
 Testing
 -------
 
