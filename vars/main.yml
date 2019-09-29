@@ -13,13 +13,13 @@ _openvas_packages:
     - openvas
   Alpine:
     - openvas-scanner
-  Fedora:
+  RedHat:
     - openvas-cli
     - openvas-scanner
-  openSUSE Leap:
+  Suse:
     - openvas-scanner
 
-openvas_packages: "{{ _openvas_packages[ansible_distribution] | default(_openvas_packages['default']) }}"
+openvas_packages: "{{ _openvas_packages[ansible_os_family] | default(_openvas_packages['default']) }}"
 
 openvas_release_version: 1.0-21
 
