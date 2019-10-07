@@ -6,6 +6,9 @@ openvas
 
 Install and configure openvas on your system.
 
+<img src="https://img.shields.io/ansible/role/d/30167"/>
+<img src="https://img.shields.io/ansible/quality/30167"/>
+
 Example Playbook
 ----------------
 
@@ -128,7 +131,7 @@ This role has been tested against the following distributions and Ansible versio
 |alpine-edge*|no|no|no*|
 |alpine-latest|yes|yes|yes*|
 |archlinux|no|yes|no*|
-|centos-6|no|no|yes*|
+|centos-7|no|no|yes*|
 |centos-latest|yes|yes|yes*|
 |debian-stable|yes|yes|yes*|
 |debian-unstable*|yes|yes|yes*|
