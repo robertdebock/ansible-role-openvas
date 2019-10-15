@@ -55,6 +55,7 @@ The machine you are running this on, may need to be prepared.
     - robertdebock.buildtools
     - robertdebock.epel
     - robertdebock.python_pip
+    - robertdebock.apt_autostart
     - robertdebock.redis
     - robertdebock.ca
 ```
@@ -91,6 +92,7 @@ The following roles can be installed to ensure all requirements are met, using `
 - robertdebock.ca
 - robertdebock.epel
 - robertdebock.python_pip
+- robertdebock.apt_autostart
 - robertdebock.redis
 - robertdebock.selinux
 - robertdebock.reboot
