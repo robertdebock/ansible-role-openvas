@@ -27,5 +27,6 @@
     - robertdebock.buildtools
     - robertdebock.epel
     - robertdebock.python_pip
+    - robertdebock.apt_autostart
     - robertdebock.redis
     - robertdebock.ca
