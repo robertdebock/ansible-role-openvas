@@ -28,16 +28,17 @@
   until: openvas_install_requirements_pip is succeeded
   retries: 3
 
-- name: install repository key (apt)
-  apt_key:
-    keyserver: keyserver.ubuntu.com
-    id: FFBD5D0A4520AFA9
-    state: present
-  when:
-    - ansible_pkg_mgr == "apt"
-  register: openvas_install_repository_key_apt
-  until: openvas_install_repository_key_apt is succeeded
-  retries: 3
+# The GPG key can't be found (anymore) on keyserver.ubuntu.com
+# - name: install repository key (apt)
+#   apt_key:
+#     keyserver: keyserver.ubuntu.com
+#     id: FFBD5D0A4520AFA9
+#     state: present
+#   when:
+#     - ansible_pkg_mgr == "apt"
+#   register: openvas_install_repository_key_apt
+#   until: openvas_install_repository_key_apt is succeeded
+#   retries: 3
 
 - name: install repository key (yum/dnf/zypper)
   rpm_key:
@@ -84,6 +85,7 @@
   package:
     name: "{{ openvas_packages }}"
     state: present
+    allow_unauthenticated: yes
   notify:
     - setup openvas
   register: openvas_install_openvas_package
