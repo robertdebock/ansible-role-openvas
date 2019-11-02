@@ -14,8 +14,6 @@
   async: 1800
   poll: 0
   register: setup_openvas
-  when:
-    - ansible_virtualization_type != "docker"
   notify:
     - check setup openvas
 
