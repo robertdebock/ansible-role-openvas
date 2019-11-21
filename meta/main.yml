@@ -36,17 +36,9 @@ galaxy_info:
         - bionic
 
   galaxy_tags:
-    - openvas
-    - alpine
-    - centos
-    - debian
-    - el
-    - fedora
-    - opensuse
-    - rhel
     - server
     - system
-    - ubuntu
+    - centos
 
 dependencies:
   - robertdebock.selinux
