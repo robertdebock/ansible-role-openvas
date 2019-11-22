@@ -85,7 +85,8 @@
   package:
     name: "{{ openvas_packages }}"
     state: present
-    allow_unauthenticated: yes
+    # allow_unauthenticated: yes
+    disable_gpg_check: yes
   notify:
     - setup openvas
   register: openvas_install_openvas_package
