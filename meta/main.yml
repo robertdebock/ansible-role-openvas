@@ -14,9 +14,6 @@ galaxy_info:
     - name: Alpine
       versions:
         - all
-    - name: ArchLinux
-      versions:
-        - all
     - name: Debian
       versions:
         - all
@@ -32,7 +29,6 @@ galaxy_info:
         - all
     - name: Ubuntu
       versions:
-        - artful
         - bionic
 
   galaxy_tags:

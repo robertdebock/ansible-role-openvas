@@ -1,15 +1,16 @@
 openvas
 =========
 
-<img src="https://docs.ansible.com/ansible-tower/3.2.4/html_ja/installandreference/_static/images/logo_invert.png" width="10%" height="10%" alt="Ansible logo" align="right"/>
-<a href="https://travis-ci.org/robertdebock/ansible-role-openvas"> <img src="https://travis-ci.org/robertdebock/ansible-role-openvas.svg?branch=master" alt="Build status"/></a> <img src="https://img.shields.io/ansible/role/d/30167"/> <img src="https://img.shields.io/ansible/quality/30167"/>
-
 Install and configure openvas on your system.
+
+|Travis|GitHub|Quality|Downloads|
+|------|------|-------|---------|
+|[![travis](https://travis-ci.org/robertdebock/ansible-role-openvas.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-openvas)|[![github](https://github.com/robertdebock/ansible-role-openvas/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-openvas/actions)|![quality](https://img.shields.io/ansible/quality/46586)|![downloads](https://img.shields.io/ansible/role/d/46586)|
 
 Example Playbook
 ----------------
 
-This example is taken from `molecule/resources/playbook.yml` and is tested on each push, pull request and release.
+This example is taken from `molecule/resources/converge.yml` and is tested on each push, pull request and release.
 ```yaml
 ---
 - name: Converge
@@ -21,7 +22,7 @@ This example is taken from `molecule/resources/playbook.yml` and is tested on ea
     - robertdebock.openvas
 ```
 
-The machine you are running this on, may need to be prepared, I use this playbook to ensure everything is in place to let the role work.
+The machine may need to be prepared using `molecule/resources/prepare.yml`:
 ```yaml
 ---
 - name: Prepare
@@ -97,6 +98,12 @@ The following roles can be installed to ensure all requirements are met, using `
 
 ```
 
+Dependencies
+------------
+
+Most roles require some kind of preparation, this is done in `molecule/default/prepare.yml`. This role has a "hard" dependency on the following roles:
+
+- robertdebock.selinux
 Context
 -------
 
@@ -115,12 +122,11 @@ This role has been tested on these [container images](https://hub.docker.com/):
 |---------|----|
 |amazon|all|
 |alpine|all|
-|archlinux|all|
 |debian|all|
 |el|7, 8|
 |fedora|all|
 |opensuse|all|
-|ubuntu|artful, bionic|
+|ubuntu|bionic|
 
 The minimum version of Ansible required is 2.8 but tests have been done to:
 
