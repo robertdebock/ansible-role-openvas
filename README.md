@@ -1,5 +1,7 @@
-openvas
+ARCHIVED - openvas
 =========
+
+NOTA BENE: This repository has been archived, no maintenance is being performed anymore.
 
 Install and configure openvas on your system.
 
